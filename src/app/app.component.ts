@@ -7,5 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Test Game';
-  page = '0'
+  page = 'Intro';
+
+  public start(): void {
+    this.page = '0';
+  }
 }

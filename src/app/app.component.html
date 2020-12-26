@@ -26,6 +26,7 @@
     </a>
 </div>
 
-<app-component-test [page]="page"> </app-component-test>
+<app-start *ngIf="page === 'Intro'" (start)="start()"></app-start>
+<app-component-test *ngIf="page !== 'Intro'" [page]="page"> </app-component-test>
 
 <router-outlet></router-outlet>
