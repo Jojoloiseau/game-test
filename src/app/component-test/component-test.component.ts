@@ -16,11 +16,13 @@ export class ComponentTestComponent implements OnInit {
   public description: string | undefined;
   public nextPages: string[] | undefined;
   public fullPage: string | undefined;
+  public audio = new Audio();
 
   ngOnInit(): void {
   this.nextPages = [];
   this.description = '';
   this.fullPage = '';
+  this.playAudio();
   this.http.get('assets/' + this.page + '.txt', {responseType: 'text'})
         .subscribe((data) => {
         this.fullPage = data;
@@ -39,8 +41,18 @@ export class ComponentTestComponent implements OnInit {
   }
 
   public load(page: string): void{
+    this.audio.pause();
+    this.audio.currentTime = 0;
     this.page = page;
     this.ngOnInit()
   }
+
+  public playAudio(): void{
+    //let audio = new Audio();
+    this.audio.src = "../../../assets/audio/test.mp3";
+    this.audio.load();
+    this.audio.play();
+  }
+
   
 }
