@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -8,13 +8,39 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ComponentTestComponent implements OnInit {
 
+  @Input()
+  public page: string | undefined;
+
   constructor(private http: HttpClient) { }
 
+  public description: string | undefined;
+  public nextPages: string[] | undefined;
+  public fullPage: string | undefined;
+
   ngOnInit(): void {
-  this.http.get('assets/test.txt', {responseType: 'text'})
-        .subscribe(data => console.log(data));
+  this.nextPages = [];
+  this.description = '';
+  this.fullPage = '';
+  this.http.get('assets/' + this.page + '.txt', {responseType: 'text'})
+        .subscribe((data) => {
+        this.fullPage = data;
+        console.log(data);
+        this.getElements();
+        });
   }
 
-  
+  private getElements(): void {
+    if(!!this.fullPage) {
+      const elts = this.fullPage.split('*');
+      this.description = elts[0];
+      const pages: string = elts[1];
+      this.nextPages = pages.split(';');
+    }
+  }
 
+  public load(page: string): void{
+    this.page = page;
+    this.ngOnInit()
+  }
+  
 }
