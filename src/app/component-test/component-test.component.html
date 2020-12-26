@@ -2,6 +2,9 @@
   <div class="card highlight-card card-small">
     <span style="font-size: 3em; color: #ffffff; margin-left: 0px;">
       <i class="fas fa-camera"></i>
+      <i class="fas fa-fist-raised"></i>
+      <i class="fas fa-drumstick-bite"></i>
+      <i class="fas fa-shoe-prints"></i>
     </span>
     <span> </span>
     <span style="margin-left: 0px">Page actuelle : {{page}}</span>
@@ -9,11 +12,16 @@
  </div>
 
  <div id="description">
+ <h3>
   <span style="margin-left: 0px">{{description}}</span>
+  </h3>
  </div>
 
- <div id="goTo">
-  <button *ngFor="let nextPage of nextPages" (click)="load(nextPage)">{{nextPage}}</button>
+
+ <div id="goTo" class="card-container">
+    <div class="card card-small" *ngFor="let nextPage of nextPages" (click)="load(nextPage)">
+    <i class="fas fa-caret-right"></i>{{nextPage}}<i class="fas fa-caret-left"></i>
+    </div>
  </div>
 
 
