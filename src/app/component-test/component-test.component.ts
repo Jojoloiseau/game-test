@@ -23,10 +23,11 @@ export class ComponentTestComponent implements OnInit {
   }
 
   public title: string | undefined;
+  public type: string | undefined; // I introduction ; F fight ; E explore ; N negociate ; C character ; R restore
   public description: string | undefined;
   public nextPages: Page[] | undefined;
   public fullPage: string | undefined;
-
+  
   ngOnInit(): void {
     this.nextPages = [];
       this.description = '';
@@ -43,8 +44,9 @@ export class ComponentTestComponent implements OnInit {
     if(!!this.fullPage) {
       const elts = this.fullPage.split('*');
       this.title = elts[0];
-      this.description = elts[1];
-      const pages: string = elts[2];
+      this.type = elts[1]
+      this.description = elts[2];
+      const pages: string = elts[3];
       const nextPages = pages.split(';');
       this.nextPages = nextPages.map((elt) => {
         return {
@@ -52,6 +54,8 @@ export class ComponentTestComponent implements OnInit {
           description: elt.split('-')[1]
         };
       });
+        
+
     }
   }
 

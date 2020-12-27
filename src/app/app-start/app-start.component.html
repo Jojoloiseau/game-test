@@ -5,7 +5,7 @@
 
     <form class="example-form">
     
-    <input [(ngModel)]="name" [ngModelOptions]="{standalone: true}" required placeholder="Yourname">
+    <input [(ngModel)]="name" [ngModelOptions]="{standalone: true}" required placeholder="Yourname" (keyup)="onKeyUp($event)">
     </form>
 
 <!--<div class="card highlight-card card-small">

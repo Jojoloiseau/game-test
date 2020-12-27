@@ -19,4 +19,10 @@ export class AppStartComponent implements OnInit {
     this.start.emit(this.name);
   }
 
+  public onKeyUp(event: any): void{
+    if (event.key === "Enter") {
+      this.onClick();
+    }
+  }
+
 }

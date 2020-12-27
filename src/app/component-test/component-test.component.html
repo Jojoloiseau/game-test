@@ -1,13 +1,13 @@
 <div class="content">
   <div class="card highlight-card card-small">
-    <span style="font-size: 3em; color: #ffffff; margin-left: 0px;">
-      <i class="fas fa-camera"></i>
-      <i class="fas fa-fist-raised"></i>
-      <i class="fas fa-drumstick-bite"></i>
-      <i class="fas fa-shoe-prints"></i>
-    </span>
-    <span> </span>
-    <span style="margin-left: 0px">{{title}}</span>
+      <span style="font-size: 3em; color: #ffffff; margin-left: 0px;">
+        <i *ngIf="type === 'I'" class="fas fa-camera"></i>
+        <i *ngIf="type === 'F'" class="fas fa-fist-raised"></i>
+        <i *ngIf="type === 'R'" class="fas fa-drumstick-bite"></i>
+        <i *ngIf="type === 'E'" class="fas fa-shoe-prints"></i>
+      </span>
+      <span> </span>
+      <span style="margin-left: 0px">{{title}}</span>
   </div>
  </div>
 
