@@ -21,7 +21,7 @@ export class AppComponent {
   console.log(event);
     this.name = event;
     this.page = '0';
-    this.playAudio();
+    this.playAudio('test2');
   }
 
   public onMove(): void {
@@ -30,6 +30,7 @@ export class AppComponent {
     if(this.energy === 0){
       this.page = 'bad-end';
       this.stopAudio();
+      this.playAudio('fail');
       //this.init();
     }
   }
@@ -46,9 +47,9 @@ export class AppComponent {
     this.energyMax = 20;
   }
 
-  public playAudio(): void{
+  public playAudio(song: string): void{
     //let audio = new Audio();
-      this.audio.src = "../../../assets/audio/test2.mp3";
+      this.audio.src = "../../../assets/audio/" + song +".mp3";
       this.audio.load();
       this.audio.play();
   }
