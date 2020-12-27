@@ -7,7 +7,7 @@
       <i class="fas fa-shoe-prints"></i>
     </span>
     <span> </span>
-    <span style="margin-left: 0px">Page actuelle : {{page}}</span>
+    <span style="margin-left: 0px">{{title}}</span>
   </div>
  </div>
 
@@ -19,8 +19,8 @@
 
 
  <div id="goTo" class="card-container">
-    <div class="card card-small" *ngFor="let nextPage of nextPages" (click)="load(nextPage)">
-    <i class="fas fa-caret-right"></i>{{nextPage}}<i class="fas fa-caret-left"></i>
+    <div class="card card-small" *ngFor="let nextPage of nextPages" (click)="load(nextPage.page)">
+    <i class="fas fa-caret-right"></i>{{nextPage.description}}<i class="fas fa-caret-left"></i>
     </div>
  </div>
 

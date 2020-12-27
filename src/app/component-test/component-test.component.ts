@@ -1,5 +1,12 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators'
+
+interface Page{
+  page: string;
+  description: string;
+}
+
 
 @Component({
   selector: 'app-component-test',
@@ -15,10 +22,10 @@ export class ComponentTestComponent implements OnInit {
   constructor(private http: HttpClient) {
   }
 
+  public title: string | undefined;
   public description: string | undefined;
-  public nextPages: string[] | undefined;
+  public nextPages: Page[] | undefined;
   public fullPage: string | undefined;
-  public audio = new Audio();
 
   ngOnInit(): void {
     this.nextPages = [];
@@ -35,16 +42,31 @@ export class ComponentTestComponent implements OnInit {
   private getElements(): void {
     if(!!this.fullPage) {
       const elts = this.fullPage.split('*');
-      this.description = elts[0];
-      const pages: string = elts[1];
-      this.nextPages = pages.split(';');
+      this.title = elts[0];
+      this.description = elts[1];
+      const pages: string = elts[2];
+      const nextPages = pages.split(';');
+      this.nextPages = nextPages.map((elt) => {
+        return {
+          page: elt.split('-')[0],
+          description: elt.split('-')[1]
+        };
+      });
     }
   }
 
   public load(page: string): void{
     this.page = page;
+    this.playAudio('turning-page');
     this.moving.emit();
       this.ngOnInit()
+  }
+
+  public playAudio(song: string): void{
+    let audio = new Audio();
+    audio.src = "../../../assets/audio/" + song +".mp3";
+    audio.load();
+    audio.play();
   }
 
   
