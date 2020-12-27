@@ -1,4 +1,15 @@
 
 <div class="content-bis">
 <img *ngIf="!!getPictureUrl()" src="{{getPictureUrl()}}" alt="image">
+<h2>PdV : {{ life }}/{{ maxLife }}</h2>
+<h2>Talent de combat : {{ skills }}</h2>
+
+<div id="fightActions" class="card-container">
+    <div class="card card-small" (click)="attack()">
+      <i class="fas fa-caret-right"></i>Attaquer<i class="fas fa-caret-left"></i>
+    </div>
+    <div class="card card-small" (click)="flee()">
+      <i class="fas fa-caret-right"></i>Fuir<i class="fas fa-caret-left"></i>
+    </div>
+ </div>
 </div>

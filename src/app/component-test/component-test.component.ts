@@ -13,9 +13,9 @@ export interface ChangeCharacs{
 }
 
 export interface FightData{
-  life: number;
-  skills: number;
-  picture: string;
+  life?: number;
+  skills?: number;
+  picture?: string;
 }
 
 
@@ -30,6 +30,13 @@ export class ComponentTestComponent implements OnInit {
   public page: string | undefined;
   @Input()
   public name: string;
+  @Input() public strenght: number;
+  @Input() public magic: number;
+  @Input() public heart: number;
+  @Input() public energy: number;
+  @Input() public energyMax: number;
+  @Input() public bolt: number;
+
   @Output() moving = new EventEmitter<void>();
   @Output() characsChanging = new EventEmitter<ChangeCharacs>();
   @Output() changeAtmosphere = new EventEmitter<string>();
@@ -37,6 +44,12 @@ export class ComponentTestComponent implements OnInit {
   constructor(private http: HttpClient) {
   this.name = '';
   this.fightFinishedWell = false;
+  this.strenght = 1;
+  this.magic = 1;
+  this.heart = 1;
+  this.energy = 20;
+  this.bolt = 5;
+  this.energyMax = 20;
   }
 
   public title: string | undefined;
