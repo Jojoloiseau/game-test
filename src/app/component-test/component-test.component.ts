@@ -7,6 +7,11 @@ interface Page{
   description: string;
 }
 
+export interface ChangeCharacs{
+  charac: string;
+  change: number;
+}
+
 
 @Component({
   selector: 'app-component-test',
@@ -18,6 +23,7 @@ export class ComponentTestComponent implements OnInit {
   @Input()
   public page: string | undefined;
   @Output() moving = new EventEmitter<void>();
+  @Output() characsChanging = new EventEmitter<ChangeCharacs>();
 
   constructor(private http: HttpClient) {
   }
@@ -27,6 +33,7 @@ export class ComponentTestComponent implements OnInit {
   public description: string | undefined;
   public nextPages: Page[] | undefined;
   public fullPage: string | undefined;
+  public changeCharacs: ChangeCharacs | undefined;
   
   ngOnInit(): void {
     this.nextPages = [];
@@ -54,8 +61,12 @@ export class ComponentTestComponent implements OnInit {
           description: elt.split('-')[1]
         };
       });
-        
-
+      this.changeCharacs = {
+        charac : elts[4]?.split(';')[0],
+        change : parseInt(elts[4]?.split(';')[1])
+      };
+      console.log(this.changeCharacs);
+      this.characsChanging.emit(this.changeCharacs);
     }
   }
 

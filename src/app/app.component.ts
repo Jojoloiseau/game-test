@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ChangeCharacs } from './component-test/component-test.component'
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,7 @@ export class AppComponent {
   magic = 1;
   heart = 1;
   energy = 20;
-  money = 5;
+  bolt = 5;
   energyMax = 20;
   audio = new Audio();
 
@@ -43,7 +44,7 @@ export class AppComponent {
     this.magic = 1;
     this.heart = 1;
     this.energy = 20;
-    this.money = 5;
+    this.bolt = 5;
     this.energyMax = 20;
   }
 
@@ -57,6 +58,22 @@ export class AppComponent {
     this.audio.pause();
     this.audio.currentTime = 0;
   }
-  
+
+  public onCharacChanging(event: ChangeCharacs): void {
+  console.log(event);
+    if(event.charac === 'S'){
+      this.strenght = this.strenght + event.change;
+    } else if (event.charac === 'M') {
+      this.magic = this.magic + event.change;
+    } else if (event.charac === 'H') {
+      this.heart = this.heart + event.change;
+    } else if (event.charac === 'E') {
+      this.energy = this.energy + event.change;
+    } else if (event.charac === 'B') {
+      this.bolt = this.bolt + event.change;
+    } else if (event.charac === 'S') {
+      this.strenght = this.strenght + event.change;
+    }
+  }
 
 }
