@@ -12,6 +12,12 @@ export interface ChangeCharacs{
   change: number;
 }
 
+export interface FightData{
+  life: number;
+  skills: number;
+  picture: string;
+}
+
 
 @Component({
   selector: 'app-component-test',
@@ -30,6 +36,7 @@ export class ComponentTestComponent implements OnInit {
 
   constructor(private http: HttpClient) {
   this.name = '';
+  this.fightFinishedWell = false;
   }
 
   public title: string | undefined;
@@ -39,6 +46,9 @@ export class ComponentTestComponent implements OnInit {
   public nextPages: Page[] | undefined;
   public fullPage: string | undefined;
   public changeCharacs: ChangeCharacs | undefined;
+  public fightData: FightData | undefined;
+
+  public fightFinishedWell: boolean;
   
   ngOnInit(): void {
     this.nextPages = [];
@@ -72,8 +82,13 @@ export class ComponentTestComponent implements OnInit {
         charac : elts[5]?.split(';')[0],
         change : parseInt(elts[5]?.split(';')[1])
       };
-      console.log(this.changeCharacs);
       this.characsChanging.emit(this.changeCharacs);
+      this.fightData = {
+        life: parseInt(elts[6]?.split(';')[0]),
+        skills: parseInt(elts[6]?.split(';')[1]),
+        picture: elts[6]?.split(';')[2]
+      }
+      console.log(this.fightData);
     }
   }
 
@@ -90,8 +105,4 @@ export class ComponentTestComponent implements OnInit {
     audio.load();
     audio.play();
   }
-
-  
-
-  
 }

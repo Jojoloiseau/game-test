@@ -12,13 +12,14 @@
  </div>
 
  <div id="description">
- <h3>
-  <span style="margin-left: 0px">{{description}}</span>
+  <h3>
+    <span style="margin-left: 0px">{{description}}</span>
   </h3>
  </div>
 
+ <app-fight *ngIf="type === 'F'" [fightData]="fightData"></app-fight>
 
- <div id="goTo" class="card-container">
+ <div id="goTo" class="card-container" *ngIf="type !== 'F' || fightFinishedWell">
     <div class="card card-small" *ngFor="let nextPage of nextPages" (click)="load(nextPage.page)">
     <i class="fas fa-caret-right"></i>{{nextPage.description}}<i class="fas fa-caret-left"></i>
     </div>

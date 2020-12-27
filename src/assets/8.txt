@@ -1,0 +1,3 @@
+Les bois*combat*F*Un écureuil attaque, défends-toi !
+*8-Retourner vers les fougères;9-Continuer entre les arbres**6;2;ecureuil*
+
