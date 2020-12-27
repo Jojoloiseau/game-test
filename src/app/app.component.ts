@@ -99,6 +99,9 @@ export class AppComponent {
         if(this.energy > this.energyMax) {
           this.energy = this.energyMax;
         }
+        if (this.energy < 0) {
+          this.energy = 0;
+        }
       }
     }
   }

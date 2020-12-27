@@ -1,1 +1,5 @@
-The Woods*E*Blablabla Woods*3-To the Sand;4-To the Sea;0-To the Beginning*S;2
+Les bois*E*Tu arrives dans les bois. Entre des feuilles mortes, tu trouves un module d'amélioration physique. Wow, il a l'air fonctionnel ! C'est plutôt rare ! 
+Tu t'empresses de le glisser dans ton bras.Tu observes au pied des arbres des espèces de champignons que tu connais mal. 
+Du coin de l'oeil, tu vois des ombres étranges derrière les fougères.
+Que comptes-tu faire ?
+*3-Scanner les champignons;4-Observer les fougères*S;2
