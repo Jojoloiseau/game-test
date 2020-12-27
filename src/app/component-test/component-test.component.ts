@@ -22,10 +22,13 @@ export class ComponentTestComponent implements OnInit {
 
   @Input()
   public page: string | undefined;
+  @Input()
+  public name: string;
   @Output() moving = new EventEmitter<void>();
   @Output() characsChanging = new EventEmitter<ChangeCharacs>();
 
   constructor(private http: HttpClient) {
+  this.name = '';
   }
 
   public title: string | undefined;
@@ -52,7 +55,7 @@ export class ComponentTestComponent implements OnInit {
       const elts = this.fullPage.split('*');
       this.title = elts[0];
       this.type = elts[1]
-      this.description = elts[2];
+      this.description = elts[2].replace('[Name]', this.name);
       const pages: string = elts[3];
       const nextPages = pages.split(';');
       this.nextPages = nextPages.map((elt) => {
