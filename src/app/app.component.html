@@ -1,19 +1,65 @@
 
 <!-- Toolbar -->
-<div class="toolbar" role="banner">
+<div class="toolbar" role="banner" *ngIf="name.length > 0; else emptyToolbar">
   <span style="font-size: 3em; color: #ffffff; margin-left: 0px;">
-      <i class="fas fa-camera"></i>
+      <i class="fas fa-universal-access"></i>
   </span>
   <span>{{name}}</span>
-  <span> </span>
   <div class="spacer"></div>
-  <span>Le jeu dont vous êtes le héros</span>
+  <span style="font-size: 3em; color: #ffffff; margin-left: 0px;">
+      <i class="fas fa-fist-raised"></i>
+  </span>
+  <span>{{strenght}}</span>
     <div class="spacer"></div>
+    <span style="font-size: 3em; color: #ffffff; margin-left: 0px;">
+      <i class="fas fa-brain"></i>
+  </span>
+  <span>{{magic}}</span>
+  <div class="spacer"></div>
+  <span style="font-size: 3em; color: #ffffff; margin-left: 0px;">
+      <i class="fas fa-handshake"></i>
+  </span>
+  <span>{{heart}}</span>
+  <div class="spacer"></div>
+  <span style="font-size: 3em; color: #ffffff; margin-left: 0px;" *ngIf="energy === energyMax; else threeQuarter">
+      <i class="fas fa-battery-full"></i>
+  </span>
+  <span>{{energy}}</span>
+  <div class="spacer"></div>
+  <span style="font-size: 3em; color: #ffffff; margin-left: 0px;">
+      <i class="fas fa-coins"></i>
+  </span>
+  <span>{{money}}</span>
 </div>
 
-<div>
-<span>{{name}}</span>
+<ng-template #emptyToolbar>
+<div class="toolbar" role="banner">
 </div>
+</ng-template>
+
+<ng-template #threeQuarter>
+ <span style="font-size: 3em; color: #ffffff; margin-left: 0px;" *ngIf="energy > energyMax*(3/4); else midEnergy">
+      <i class="fas fa-battery-three-quarters"></i>
+  </span>
+</ng-template>
+
+<ng-template #midEnergy>
+ <span style="font-size: 3em; color: #ffffff; margin-left: 0px;" *ngIf="energy > energyMax/2; else quarterEnergy">
+      <i class="fas fa-battery-half"></i>
+  </span>
+</ng-template>
+
+<ng-template #quarterEnergy>
+ <span style="font-size: 3em; color: #ffffff; margin-left: 0px;" *ngIf="energy !== 0; else noEnergy">
+      <i class="fas fa-battery-quarter"></i>
+  </span>
+</ng-template>
+
+<ng-template #noEnergy>
+ <span style="font-size: 3em; color: #ffffff; margin-left: 0px;">
+      <i class="fas fa-battery-empty"></i>
+  </span>
+</ng-template>
 
 <app-start *ngIf="page === 'Intro'" (start)="start($event)"></app-start>
 <app-component-test *ngIf="page !== 'Intro'" [page]="page"> </app-component-test>

@@ -9,9 +9,12 @@ export class AppComponent {
   title = 'Test Game';
   page = 'Intro';
   name = '';
-  force = 0;
-  intelligence = 0;
-  luck = 0;
+  strenght = 1;
+  magic = 1;
+  heart = 1;
+  energy = 20;
+  money = 5;
+  energyMax = 20;
 
   public start(event: string): void {
   console.log(event);

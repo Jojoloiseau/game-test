@@ -15,7 +15,7 @@
     <span style="margin-left: 0px">Welcome !</span>
   </div>-->
 
-  <div id="goTo" class="card-container">
+  <div *ngIf="!!name && name.length !== 0" id="goTo" class="card-container">
     <div class="card card-small" (click)="onClick()">
     <i class="fas fa-caret-right"></i>Start<i class="fas fa-caret-left"></i>
     </div>
