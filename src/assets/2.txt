@@ -1,0 +1,5 @@
+La plaine*plaine*E*Tu lances un regard vers la plaine verdoyante, tu respires un grand coup et tu te lances ! Entre les brins d'herbe, tu trouves tout un tas de plantes.
+Tu reconnais des herbes médicinales dont il te semble avoir déjà entendu parler. En tendant ton bras, il se transforme en scanner ! Avec cet outil intégré, tu captes des informations : structure chimique de la plante, applications...
+Tu en prélèves quelques unes.
+En te retournant, tu vois des taupes en train de creuser et de venir dans ta direction. Que faire ?
+*5-Fuir les taupes;6-Aller vers les taupes;7-Continuer d'observer les plantes*I;1

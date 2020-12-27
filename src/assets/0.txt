@@ -1,4 +1,6 @@
-Introduction*I*Salut [Name] ! Bienvenue à Robot-land. Tu es un Androïde, c'est à dire un individu doté d'attributs de robot et d'attributs humains.
+Introduction*intro*I*[Name]... Tu es un Androïde, c'est à dire un individu doté d'attributs de robot et d'attributs humains.
 Tu as un module qui te permet de suivre plusieurs indicateurs : tes capacités physiques, ta vivacité d'esprit, ta capacité d'entraide, ton énergie, et tes boulons (la monnaie locale).
-Tu te réveilles dans une cabane en bordure de forêt avec des souvenirs un peu flous. Le panneau solaire n'a plus l'air de fonctionner. Si ça continue comme ça, tu vas tomber à court d'énergie.
-A tes pieds se trouvent plusieurs chemins. Vers où souhaites-tu aller ?*1-Vers les bois;2-Dans la plaine
+Tu te réveilles dans une cabane en bordure de forêt avec des souvenirs un peu flous. Le panneau solaire n'a plus l'air de fonctionner. 
+Si ça continue comme ça, tu vas tomber à court d'énergie ! Il faut trouver une solution, et il ne semble pas y avoir grand-chose dans la maison qui puisse t'aider. 
+Tu trouves tout de même 5 boulons que tu ramasses et tu fais un rapide scan mental. Tout à l'air d'aller bien, mais il ne faut pas tarder.
+Vers où souhaites-tu aller ?*1-Vers les bois;2-Dans la plaine

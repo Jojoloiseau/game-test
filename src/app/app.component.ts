@@ -17,12 +17,15 @@ export class AppComponent {
   bolt = 5;
   energyMax = 20;
   audio = new Audio();
+  oldPlace = '';
+  newPlace = '';
 
   public start(event: string): void {
   console.log(event);
     this.name = event;
     this.page = '0';
-    this.playAudio('test2');
+    this.playAudio('intro');
+    this.oldPlace='intro';
   }
 
   public onMove(): void {
@@ -57,6 +60,15 @@ export class AppComponent {
   public stopAudio(): void{
     this.audio.pause();
     this.audio.currentTime = 0;
+  }
+
+  public changeMusic(event: string): void {
+    this.newPlace = event;
+    if (this.newPlace !== this.oldPlace) {
+      this.stopAudio();
+      this.playAudio(this.newPlace);
+      this.oldPlace = event;
+    }
   }
 
   public onCharacChanging(event: ChangeCharacs): void {

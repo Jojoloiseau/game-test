@@ -26,6 +26,7 @@ export class ComponentTestComponent implements OnInit {
   public name: string;
   @Output() moving = new EventEmitter<void>();
   @Output() characsChanging = new EventEmitter<ChangeCharacs>();
+  @Output() changeAtmosphere = new EventEmitter<string>();
 
   constructor(private http: HttpClient) {
   this.name = '';
@@ -33,6 +34,7 @@ export class ComponentTestComponent implements OnInit {
 
   public title: string | undefined;
   public type: string | undefined; // I introduction ; F fight ; E explore ; N negociate ; C character ; R restore
+  public ambiance: string | undefined;
   public description: string | undefined;
   public nextPages: Page[] | undefined;
   public fullPage: string | undefined;
@@ -54,9 +56,11 @@ export class ComponentTestComponent implements OnInit {
     if(!!this.fullPage) {
       const elts = this.fullPage.split('*');
       this.title = elts[0];
-      this.type = elts[1]
-      this.description = elts[2].replace('[Name]', this.name);
-      const pages: string = elts[3];
+      this.ambiance = elts[1];
+      this.changeAtmosphere.emit(this.ambiance);
+      this.type = elts[2]
+      this.description = elts[3].replace('[Name]', this.name);
+      const pages: string = elts[4];
       const nextPages = pages.split(';');
       this.nextPages = nextPages.map((elt) => {
         return {
@@ -65,8 +69,8 @@ export class ComponentTestComponent implements OnInit {
         };
       });
       this.changeCharacs = {
-        charac : elts[4]?.split(';')[0],
-        change : parseInt(elts[4]?.split(';')[1])
+        charac : elts[5]?.split(';')[0],
+        change : parseInt(elts[5]?.split(';')[1])
       };
       console.log(this.changeCharacs);
       this.characsChanging.emit(this.changeCharacs);
