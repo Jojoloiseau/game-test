@@ -118,4 +118,8 @@ export class AppComponent {
     }
   }
 
+  public gotHit(event: number): void{
+    this.energy = this.energy - event;
+  }
+
 }

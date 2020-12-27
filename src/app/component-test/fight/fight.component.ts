@@ -18,6 +18,7 @@ export class FightComponent implements OnInit {
   @Input() public energyMax: number;
   @Input() public bolt: number;
 
+  @Output() hit = new EventEmitter<number>();
 
   public life?: number;
   public maxLife?: number;
@@ -49,11 +50,22 @@ export class FightComponent implements OnInit {
 
   public attack(): void {
     if (this.life && this.strenght && this.energy && this.skills){
-      this.life = this.life - this.getRandomInt(this.strenght);
+      const enemyLoss = this.getRandomInt(this.strenght);
+      this.life = this.life - enemyLoss;
       console.log(this.life);
-      this.energy = this.energy - this.getRandomInt(this.skills);
+      const heroLoss = this.getRandomInt(this.skills);
+      this.energy = this.energy - heroLoss;
+      this.hit.emit(heroLoss);
       console.log(this.energy);
-
+      if(enemyLoss>heroLoss){
+        this.playAudio('goodShot');
+      } else if(enemyLoss === heroLoss && heroLoss !== 0) {
+        this.playAudio('fairShot');
+      } else if(heroLoss === 0) {
+        this.playAudio('miss');
+      } else {
+        this.playAudio('argh');
+      }
     }
   }
 
@@ -63,6 +75,14 @@ export class FightComponent implements OnInit {
 
   private getRandomInt(max: number): number {
     return Math.floor(Math.random() * Math.floor(max));
+  }
+
+  public playAudio(sound: string): void{
+    this.getRandomInt(3);
+    let audio = new Audio();
+    audio.src = "../../../../assets/audio/" + sound +".mp3";
+    audio.load();
+    audio.play();
   }
 
 }

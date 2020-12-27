@@ -18,7 +18,8 @@
  </div>
 
  <app-fight *ngIf="type === 'F'"
- [fightData]="fightData" [strenght]="strenght" [magic]="magic" [heart]="heart" [energy]="energy" [energyMax]="energyMax" [bolt]="bolt">
+ [fightData]="fightData" [strenght]="strenght" [magic]="magic" [heart]="heart" [energy]="energy" [energyMax]="energyMax" [bolt]="bolt"
+ (hit)="gotHit($event)">
  </app-fight>
 
  <div id="goTo" class="card-container" *ngIf="type !== 'F' || fightFinishedWell">

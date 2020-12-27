@@ -40,6 +40,7 @@ export class ComponentTestComponent implements OnInit {
   @Output() moving = new EventEmitter<void>();
   @Output() characsChanging = new EventEmitter<ChangeCharacs>();
   @Output() changeAtmosphere = new EventEmitter<string>();
+  @Output() hit = new EventEmitter<number>();
 
   constructor(private http: HttpClient) {
   this.name = '';
@@ -117,5 +118,9 @@ export class ComponentTestComponent implements OnInit {
     audio.src = "../../../assets/audio/" + song +".mp3";
     audio.load();
     audio.play();
+  }
+
+  public gotHit(event: number): void{
+    this.hit.emit(event);
   }
 }
