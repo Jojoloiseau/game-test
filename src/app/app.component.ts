@@ -62,17 +62,44 @@ export class AppComponent {
   public onCharacChanging(event: ChangeCharacs): void {
   console.log(event);
     if(event.charac === 'S'){
-      this.strenght = this.strenght + event.change;
+      if (this.strenght + event.change < 1){
+        this.strenght = 1;
+      } else {
+        this.strenght = this.strenght + event.change;
+      }
     } else if (event.charac === 'M') {
-      this.magic = this.magic + event.change;
+      if (this.magic + event.change < 1){
+        this.magic = 1;
+      } else {
+        this.magic = this.magic + event.change;
+      }
     } else if (event.charac === 'H') {
-      this.heart = this.heart + event.change;
+      if (this.heart + event.change < 1){
+        this.heart = 1;
+      } else {
+        this.heart = this.heart + event.change;
+      }
     } else if (event.charac === 'E') {
-      this.energy = this.energy + event.change;
+      if (this.energy + event.change < 0){
+        this.energy = 0;
+      } else {
+        this.energy = this.energy + event.change;
+      }
     } else if (event.charac === 'B') {
-      this.bolt = this.bolt + event.change;
-    } else if (event.charac === 'S') {
-      this.strenght = this.strenght + event.change;
+      if (this.bolt + event.change < 0){
+        this.bolt = 0;
+      } else {
+        this.bolt = this.bolt + event.change;
+      }
+    } else if (event.charac === 'EM') {
+      this.energyMax = this.energyMax + event.change;
+      if (event.change > 0) {
+        this.energy = this.energy + event.change;
+      } else {
+        if(this.energy > this.energyMax) {
+          this.energy = this.energyMax;
+        }
+      }
     }
   }
 
