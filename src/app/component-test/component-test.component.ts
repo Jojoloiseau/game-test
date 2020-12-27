@@ -12,7 +12,8 @@ export class ComponentTestComponent implements OnInit {
   public page: string | undefined;
   @Output() moving = new EventEmitter<void>();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   public description: string | undefined;
   public nextPages: string[] | undefined;
@@ -20,16 +21,15 @@ export class ComponentTestComponent implements OnInit {
   public audio = new Audio();
 
   ngOnInit(): void {
-  this.nextPages = [];
-  this.description = '';
-  this.fullPage = '';
-  this.playAudio();
-  this.http.get('assets/' + this.page + '.txt', {responseType: 'text'})
-        .subscribe((data) => {
-        this.fullPage = data;
-        console.log(data);
-        this.getElements();
-        });
+    this.nextPages = [];
+      this.description = '';
+      this.fullPage = '';
+      this.http.get('assets/' + this.page + '.txt', {responseType: 'text'})
+          .subscribe((data) => {
+          this.fullPage = data;
+          console.log(data);
+          this.getElements();
+          });
   }
 
   private getElements(): void {
@@ -42,19 +42,12 @@ export class ComponentTestComponent implements OnInit {
   }
 
   public load(page: string): void{
-    this.audio.pause();
-    this.audio.currentTime = 0;
     this.page = page;
     this.moving.emit();
-    this.ngOnInit()
+      this.ngOnInit()
   }
 
-  public playAudio(): void{
-    //let audio = new Audio();
-    this.audio.src = "../../../assets/audio/test2.mp3";
-    this.audio.load();
-    this.audio.play();
-  }
+  
 
   
 }

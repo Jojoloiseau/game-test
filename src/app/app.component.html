@@ -2,7 +2,8 @@
 <!-- Toolbar -->
 <div class="toolbar" role="banner" *ngIf="name.length > 0; else emptyToolbar">
   <span style="font-size: 3em; color: #ffffff; margin-left: 0px;">
-      <i class="fas fa-universal-access"></i>
+    <i class="fas fa-robot"></i>
+    <!--<i class="fas fa-universal-access"></i>-->
   </span>
   <span>{{name}}</span>
   <div class="spacer"></div>
@@ -62,6 +63,6 @@
 </ng-template>
 
 <app-start *ngIf="page === 'Intro'" (start)="start($event)"></app-start>
-<app-component-test *ngIf="page !== 'Intro'" [page]="page" (moving)="onMove()"> </app-component-test>
+<app-component-test *ngIf="page !== 'Intro' && energy > 0" [page]="page" (moving)="onMove()"> </app-component-test>
 
 <router-outlet></router-outlet>
