@@ -19,10 +19,12 @@ export class FightComponent implements OnInit {
   @Input() public bolt: number;
 
   @Output() hit = new EventEmitter<number>();
+  @Output() endOfFight = new EventEmitter<void>();
 
   public life?: number;
   public maxLife?: number;
   public skills?: number;
+  public isFightOver: boolean;
 
   constructor() {
   this.strenght = 1;
@@ -31,6 +33,7 @@ export class FightComponent implements OnInit {
   this.energy = 20;
   this.bolt = 5;
   this.energyMax = 20;
+  this.isFightOver = false;
   }
 
   ngOnInit(): void {
@@ -65,6 +68,10 @@ export class FightComponent implements OnInit {
         this.playAudio('miss');
       } else {
         this.playAudio('argh');
+      }
+      if(this.life < 1) {
+        this.isFightOver = true;
+        this.endOfFight.emit();
       }
     }
   }

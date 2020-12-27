@@ -19,10 +19,10 @@
 
  <app-fight *ngIf="type === 'F'"
  [fightData]="fightData" [strenght]="strenght" [magic]="magic" [heart]="heart" [energy]="energy" [energyMax]="energyMax" [bolt]="bolt"
- (hit)="gotHit($event)">
+ (hit)="gotHit($event)" (endOfFight)="toVictory()">
  </app-fight>
 
- <div id="goTo" class="card-container" *ngIf="type !== 'F' || fightFinishedWell">
+ <div id="goTo" class="card-container" *ngIf="type !== 'F'">
     <div class="card card-small" *ngFor="let nextPage of nextPages" (click)="load(nextPage.page)">
     <i class="fas fa-caret-right"></i>{{nextPage.description}}<i class="fas fa-caret-left"></i>
     </div>

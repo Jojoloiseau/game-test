@@ -1,0 +1,4 @@
+Les bois*victory*R*Bravo ! Tu as réussi à faire fuir cet écureuil. Il était agressif, mais tu en es venu à bout. 
+En cherchant, tu remarques son trésor... des batteries ! C'est revigorant.
+Il faut maintenant se remettre en route. Tu remarques une rivière. Tu veux la suivre ?
+*11-Continuer de s'enfoncer dans la forêt;12-Suivre la rivière.*E;5***

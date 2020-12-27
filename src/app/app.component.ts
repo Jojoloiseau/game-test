@@ -32,11 +32,14 @@ export class AppComponent {
     
     this.energy--;
     if(this.energy === 0){
-      this.page = 'bad-end';
-      this.stopAudio();
-      this.playAudio('fail');
-      //this.init();
+      this.badEnding();
     }
+  }
+
+  private badEnding(): void {
+    this.page = 'bad-end';
+    this.stopAudio();
+    this.playAudio('fail');
   }
 
   public init(): void {
@@ -96,7 +99,10 @@ export class AppComponent {
         this.energy = 0;
       } else {
         this.energy = this.energy + event.change;
-      }
+        if (this.energy > this.energyMax) {
+          this.energy = this.energyMax;
+        }
+      } 
     } else if (event.charac === 'B') {
       if (this.bolt + event.change < 0){
         this.bolt = 0;
@@ -120,6 +126,9 @@ export class AppComponent {
 
   public gotHit(event: number): void{
     this.energy = this.energy - event;
+    if(this.energy < 1){
+      this.badEnding();
+    }
   }
 
 }

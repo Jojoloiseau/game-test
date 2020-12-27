@@ -44,7 +44,6 @@ export class ComponentTestComponent implements OnInit {
 
   constructor(private http: HttpClient) {
   this.name = '';
-  this.fightFinishedWell = false;
   this.strenght = 1;
   this.magic = 1;
   this.heart = 1;
@@ -54,15 +53,15 @@ export class ComponentTestComponent implements OnInit {
   }
 
   public title: string | undefined;
-  public type: string | undefined; // I introduction ; F fight ; E explore ; N negociate ; C character ; R restore
+  public type: string | undefined; // I introduction ; F fight ; E explore ; N negociate ; C character ; H heal ; R reward
   public ambiance: string | undefined;
   public description: string | undefined;
   public nextPages: Page[] | undefined;
   public fullPage: string | undefined;
   public changeCharacs: ChangeCharacs | undefined;
   public fightData: FightData | undefined;
-
-  public fightFinishedWell: boolean;
+  public reward : string | undefined;
+  public victoriousPage : string | undefined;
   
   ngOnInit(): void {
     this.nextPages = [];
@@ -103,6 +102,8 @@ export class ComponentTestComponent implements OnInit {
         picture: elts[6]?.split(';')[2]
       }
       console.log(this.fightData);
+      this.reward = elts[7]? elts[7] : undefined;
+      this.victoriousPage = elts[8]? elts[8] : undefined;
     }
   }
 
@@ -122,5 +123,12 @@ export class ComponentTestComponent implements OnInit {
 
   public gotHit(event: number): void{
     this.hit.emit(event);
+  }
+
+  public toVictory(): void{
+    this.energy++;
+    if(this.victoriousPage){
+      this.load(this.victoriousPage);
+    }
   }
 }
