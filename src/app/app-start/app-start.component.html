@@ -1,0 +1,21 @@
+<div class="content">
+
+<h2>Welcome to Robot hero adventures !</h2>
+<p>What is your name ?</p>
+
+    <form class="example-form">
+    
+    <input [(ngModel)]="name" [ngModelOptions]="{standalone: true}" required placeholder="Yourname" (keyup)="onKeyUp($event)">
+    </form>
+
+<!--<div class="card highlight-card card-small">
+    <span style="margin-left: 0px">Welcome !</span>
+  </div>-->
+
+  <div *ngIf="!!name && name.length !== 0" id="goTo" class="card-container">
+    <div class="card card-small" (click)="onClick()">
+    <i class="fas fa-caret-right"></i>Start<i class="fas fa-caret-left"></i>
+    </div>
+ </div>
+
+</div>

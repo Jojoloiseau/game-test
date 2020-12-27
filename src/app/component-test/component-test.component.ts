@@ -1,5 +1,12 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators'
+
+interface Page{
+  page: string;
+  description: string;
+}
+
 
 @Component({
   selector: 'app-component-test',
@@ -10,49 +17,63 @@ export class ComponentTestComponent implements OnInit {
 
   @Input()
   public page: string | undefined;
+  @Output() moving = new EventEmitter<void>();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
+  public title: string | undefined;
+  public type: string | undefined; // I introduction ; F fight ; E explore ; N negociate ; C character ; R restore
   public description: string | undefined;
-  public nextPages: string[] | undefined;
+  public nextPages: Page[] | undefined;
   public fullPage: string | undefined;
-  public audio = new Audio();
-
+  
   ngOnInit(): void {
-  this.nextPages = [];
-  this.description = '';
-  this.fullPage = '';
-  this.playAudio();
-  this.http.get('assets/' + this.page + '.txt', {responseType: 'text'})
-        .subscribe((data) => {
-        this.fullPage = data;
-        console.log(data);
-        this.getElements();
-        });
+    this.nextPages = [];
+      this.description = '';
+      this.fullPage = '';
+      this.http.get('assets/' + this.page + '.txt', {responseType: 'text'})
+          .subscribe((data) => {
+          this.fullPage = data;
+          console.log(data);
+          this.getElements();
+          });
   }
 
   private getElements(): void {
     if(!!this.fullPage) {
       const elts = this.fullPage.split('*');
-      this.description = elts[0];
-      const pages: string = elts[1];
-      this.nextPages = pages.split(';');
+      this.title = elts[0];
+      this.type = elts[1]
+      this.description = elts[2];
+      const pages: string = elts[3];
+      const nextPages = pages.split(';');
+      this.nextPages = nextPages.map((elt) => {
+        return {
+          page: elt.split('-')[0],
+          description: elt.split('-')[1]
+        };
+      });
+        
+
     }
   }
 
   public load(page: string): void{
-    this.audio.pause();
-    this.audio.currentTime = 0;
     this.page = page;
-    this.ngOnInit()
+    this.playAudio('turning-page');
+    this.moving.emit();
+      this.ngOnInit()
   }
 
-  public playAudio(): void{
-    //let audio = new Audio();
-    this.audio.src = "../../../assets/audio/test.mp3";
-    this.audio.load();
-    this.audio.play();
+  public playAudio(song: string): void{
+    let audio = new Audio();
+    audio.src = "../../../assets/audio/" + song +".mp3";
+    audio.load();
+    audio.play();
   }
+
+  
 
   
 }
