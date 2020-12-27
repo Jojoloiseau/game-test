@@ -21,7 +21,7 @@
   </span>
   <span>{{heart}}</span>
   <div class="spacer"></div>
-  <span style="font-size: 3em; color: #ffffff; margin-left: 0px;" *ngIf="energy === energyMax; else threeQuarter">
+  <span style="font-size: 3em; color: #ffffff; margin-left: 0px;" *ngIf="energy > energyMax*(3/4); else threeQuarter">
       <i class="fas fa-battery-full"></i>
   </span>
   <span>{{energy}}</span>
@@ -38,13 +38,13 @@
 </ng-template>
 
 <ng-template #threeQuarter>
- <span style="font-size: 3em; color: #ffffff; margin-left: 0px;" *ngIf="energy > energyMax*(3/4); else midEnergy">
+ <span style="font-size: 3em; color: #ffffff; margin-left: 0px;" *ngIf="energy > energyMax/2; else midEnergy">
       <i class="fas fa-battery-three-quarters"></i>
   </span>
 </ng-template>
 
 <ng-template #midEnergy>
- <span style="font-size: 3em; color: #ffffff; margin-left: 0px;" *ngIf="energy > energyMax/2; else quarterEnergy">
+ <span style="font-size: 3em; color: #ffffff; margin-left: 0px;" *ngIf="energy > energyMax/4; else quarterEnergy">
       <i class="fas fa-battery-half"></i>
   </span>
 </ng-template>
@@ -62,6 +62,6 @@
 </ng-template>
 
 <app-start *ngIf="page === 'Intro'" (start)="start($event)"></app-start>
-<app-component-test *ngIf="page !== 'Intro'" [page]="page"> </app-component-test>
+<app-component-test *ngIf="page !== 'Intro'" [page]="page" (moving)="onMove()"> </app-component-test>
 
 <router-outlet></router-outlet>

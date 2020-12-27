@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -10,6 +10,7 @@ export class ComponentTestComponent implements OnInit {
 
   @Input()
   public page: string | undefined;
+  @Output() moving = new EventEmitter<void>();
 
   constructor(private http: HttpClient) { }
 
@@ -44,6 +45,7 @@ export class ComponentTestComponent implements OnInit {
     this.audio.pause();
     this.audio.currentTime = 0;
     this.page = page;
+    this.moving.emit();
     this.ngOnInit()
   }
 

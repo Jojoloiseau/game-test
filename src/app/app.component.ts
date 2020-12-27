@@ -21,4 +21,9 @@ export class AppComponent {
     this.name = event;
     this.page = '0';
   }
+
+  public onMove(): void {
+    this.energy--;
+  }
+
 }
