@@ -64,5 +64,6 @@
 
 <app-start *ngIf="page === 'Intro'" (start)="start($event)"></app-start>
 <app-component-test *ngIf="page !== 'Intro' && energy > 0" [page]="page" (moving)="onMove()"> </app-component-test>
+<app-failure *ngIf="energy === 0" (restart)="init()"></app-failure>
 
 <router-outlet></router-outlet>

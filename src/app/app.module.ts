@@ -7,12 +7,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ComponentTestComponent } from './component-test/component-test.component';
 import { AppStartComponent } from './app-start/app-start.component';
+import { FailureComponent } from './failure/failure.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ComponentTestComponent,
-    AppStartComponent
+    AppStartComponent,
+    FailureComponent
   ],
   imports: [
     BrowserModule,
