@@ -49,7 +49,7 @@ export class ComponentTestComponent implements OnInit {
 
   public playAudio(): void{
     //let audio = new Audio();
-    this.audio.src = "../../../assets/audio/test.mp3";
+    this.audio.src = "../../../assets/audio/test2.mp3";
     this.audio.load();
     this.audio.play();
   }

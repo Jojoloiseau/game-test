@@ -1,8 +1,24 @@
 <div class="content">
 
-<p>app-start works!</p>
-<span>Test</span>
+<h2>Welcome to lezard hero adventures !</h2>
+<p>What is your name ?</p>
 
-<button (click)="onClick()">Commencer</button>
+    <form class="example-form">
+    
+    <input [(ngModel)]="name" [ngModelOptions]="{standalone: true}" required placeholder="Yourname">
+    </form>
+
+  
+
+
+<!--<div class="card highlight-card card-small">
+    <span style="margin-left: 0px">Welcome !</span>
+  </div>-->
+
+  <div id="goTo" class="card-container">
+    <div class="card card-small" (click)="onClick()">
+    <i class="fas fa-caret-right"></i>Start<i class="fas fa-caret-left"></i>
+    </div>
+ </div>
 
 </div>

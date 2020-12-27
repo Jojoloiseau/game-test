@@ -7,7 +7,8 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class AppStartComponent implements OnInit {
 
-  @Output() start: EventEmitter<void> = new EventEmitter();
+  @Output() start = new EventEmitter<string>();
+  public name: string | undefined;
 
   constructor() { }
 
@@ -15,7 +16,7 @@ export class AppStartComponent implements OnInit {
   }
 
   public onClick(): void {
-    this.start.emit();
+    this.start.emit(this.name);
   }
 
 }
