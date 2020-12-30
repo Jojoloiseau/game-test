@@ -8,10 +8,12 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 export class FailureComponent implements OnInit {
 
   @Output() restart = new EventEmitter<void>();
+  @Output() failure = new EventEmitter<void>();
 
   constructor() { }
 
   ngOnInit(): void {
+    this.failure.emit();
   }
 
   public onClick(): void {

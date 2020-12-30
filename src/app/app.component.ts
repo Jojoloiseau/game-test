@@ -131,4 +131,8 @@ export class AppComponent {
     }
   }
 
+  public failure(): void {
+    this.badEnding();
+  }
+
 }

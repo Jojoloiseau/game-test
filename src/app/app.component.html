@@ -67,6 +67,6 @@
 [page]="page" [name]="name" [strenght]="strenght" [magic]="magic" [heart]="heart" [energy]="energy" [energyMax]="energyMax" [bolt]="bolt"
 (moving)="onMove()" (characsChanging)="onCharacChanging($event)" (changeAtmosphere)="changeMusic($event)" (hit)="gotHit($event)">
 </app-component-test>
-<app-failure *ngIf="energy < 1" (restart)="init()"></app-failure>
+<app-failure *ngIf="energy < 1" (restart)="init()" (failure)="failure()"></app-failure>
 
 <router-outlet></router-outlet>
