@@ -120,9 +120,9 @@ export class ComponentTestComponent implements OnInit {
     }
   }
 
-  public hasTheLevel(elt: Page): boolean {
+  public hasTheLevel(elt: string): boolean {
     if(elt.split('-')[2] && elt.split('-')[3] ){
-      if(elt.split('-')[2] === 'I' && this.magic >= elt.split('-')[3]) {
+      if(elt.split('-')[2] === 'I' && this.magic >= parseInt(elt.split('-')[3])) {
         return true;
       } else {
         return false;
