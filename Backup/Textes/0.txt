@@ -1,0 +1,8 @@
+Introduction*intro*I*[Name]... Tu es un Androïde. Pour ce dont tu te souviens tu es à la fois un humain et une machine.
+Tu as un module qui te permet de suivre plusieurs indicateurs : tes capacités physiques, ta vivacité d'esprit, ta capacité d'entraide, ton énergie, et tes boulons (la monnaie locale).
+Tu ne sais plus pourquoi, mais tu vis dans une cabane en bordure de forêt. Malgré tes souvenirs un peu flous, tu y vis une vie paisible.
+Ton panneau solaire fonctionne bien et te permet d'avoir assez d'énergie pour profiter de la nature environnante.
+Mais un jour... Le panneau solaire a disparu. Mhhh ça tombe mal. Peut-être un coup d'une pie voleuse ? Mais en une seule nuit et un aussi gros morceau ? Etrange.
+Quoiqu'il en soit, si ça continue comme ça, tu vas tomber à court d'énergie. Il faut trouver une solution, et vite !
+Et ce n'est pas dans la cabane que tu vas trouver de quoi t'aider. Tu prends quand même tes 5 boulons, dans le doute, et tu te mets en route.
+Vers où souhaites-tu aller ?*1-Vers les bois;2-Dans la plaine

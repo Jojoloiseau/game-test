@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-failure',
@@ -7,11 +7,15 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class FailureComponent implements OnInit {
 
+  @Input() public endingText: string;
   @Output() restart = new EventEmitter<void>();
+  @Output() failure = new EventEmitter<void>();
 
-  constructor() { }
+  constructor() {
+  this.endingText = '';}
 
   ngOnInit(): void {
+    this.failure.emit();
   }
 
   public onClick(): void {

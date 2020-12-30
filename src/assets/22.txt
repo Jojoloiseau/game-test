@@ -1,0 +1,4 @@
+Les bois*combat*F*L'oiseau semble avoir de plus en plus mal... et dans son oeil, tu vois qu'il t'en tient pour responsable !
+Il fonce sur toi. Défends-toi !
+***8;3;bird*reward*24*
+

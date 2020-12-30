@@ -1,0 +1,5 @@
+Les bois*victory*R*L'oiseau est assommé ! Ses jours ne semblent pas en danger, mais au moins, il te laissera tranquille !
+Pendant ton combat, tu as gagné en agilité (+1). Tu te sens maintenant capable de récupérer la pièce de panneau solaire... Ce que tu fais ! Youpi !
+A côté du panneau, tu trouves aussi de petites batteries compatibles à ton organisme. Tu les connectes et tu profites aussi de leur énergie. (+5)
+Où aller maintenant ?
+*23-Vers la maison;12-Vers la rivière.*S;1$EM;5***

@@ -1,10 +1,23 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators'
+import { filter, map } from 'rxjs/operators'
 
 interface Page{
   page: string;
   description: string;
+  condition?: string;
+  level?: string;
+}
+
+export interface ChangeCharacs{
+  charac: string;
+  change: number;
+}
+
+export interface FightData{
+  life?: number;
+  skills?: number;
+  picture?: string;
 }
 
 
@@ -17,16 +30,42 @@ export class ComponentTestComponent implements OnInit {
 
   @Input()
   public page: string | undefined;
+  @Input()
+  public name: string;
+  @Input() public strenght: number;
+  @Input() public magic: number;
+  @Input() public heart: number;
+  @Input() public energy: number;
+  @Input() public energyMax: number;
+  @Input() public bolt: number;
+
   @Output() moving = new EventEmitter<void>();
+  @Output() characsChanging = new EventEmitter<ChangeCharacs>();
+  @Output() changeAtmosphere = new EventEmitter<string>();
+  @Output() hit = new EventEmitter<number>();
+  @Output() endingText = new EventEmitter<string>();
 
   constructor(private http: HttpClient) {
+  this.name = '';
+  this.strenght = 1;
+  this.magic = 1;
+  this.heart = 1;
+  this.energy = 20;
+  this.bolt = 5;
+  this.energyMax = 20;
   }
 
   public title: string | undefined;
-  public type: string | undefined; // I introduction ; F fight ; E explore ; N negociate ; C character ; R restore
+  public type: string | undefined; // I introduction ; F fight ; E explore ; N negociate ; C character ; H heal ; R reward
+  public ambiance: string | undefined;
   public description: string | undefined;
   public nextPages: Page[] | undefined;
   public fullPage: string | undefined;
+  public changeCharac: ChangeCharacs | undefined;
+  public changeCharacs: string[] | undefined;
+  public fightData: FightData | undefined;
+  public reward : string | undefined;
+  public victoriousPage : string | undefined;
   
   ngOnInit(): void {
     this.nextPages = [];
@@ -44,18 +83,52 @@ export class ComponentTestComponent implements OnInit {
     if(!!this.fullPage) {
       const elts = this.fullPage.split('*');
       this.title = elts[0];
-      this.type = elts[1]
-      this.description = elts[2];
-      const pages: string = elts[3];
+      this.ambiance = elts[1];
+      this.changeAtmosphere.emit(this.ambiance);
+      this.type = elts[2]
+      this.description = elts[3].replace('[Name]', this.name);
+      if(this.type === 'L'){
+        this.endingText.emit(this.description);
+      }
+      const pages: string = elts[4];
       const nextPages = pages.split(';');
-      this.nextPages = nextPages.map((elt) => {
+      this.nextPages = nextPages
+      .filter((elt) => this.hasTheLevel(elt))
+      .map((elt) => {
         return {
           page: elt.split('-')[0],
           description: elt.split('-')[1]
         };
       });
-        
+      this.changeCharacs = elts[5]?.split('$');
+      this.changeCharacs?.forEach((elt) => {
+        this.changeCharac = {
+        charac : elt.split(';')[0],
+        change : parseInt(elt.split(';')[1])
+        };
+        this.characsChanging.emit(this.changeCharac);
+      })
+      
+      this.fightData = {
+        life: parseInt(elts[6]?.split(';')[0]),
+        skills: parseInt(elts[6]?.split(';')[1]),
+        picture: elts[6]?.split(';')[2]
+      }
+      console.log(this.fightData);
+      this.reward = elts[7]? elts[7] : undefined;
+      this.victoriousPage = elts[8]? elts[8] : undefined;
+    }
+  }
 
+  public hasTheLevel(elt: string): boolean {
+    if(elt.split('-')[2] && elt.split('-')[3] ){
+      if(elt.split('-')[2] === 'I' && this.magic >= parseInt(elt.split('-')[3])) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return true;
     }
   }
 
@@ -73,7 +146,14 @@ export class ComponentTestComponent implements OnInit {
     audio.play();
   }
 
-  
+  public gotHit(event: number): void{
+    this.hit.emit(event);
+  }
 
-  
+  public toVictory(): void{
+    this.energy++;
+    if(this.victoriousPage){
+      this.load(this.victoriousPage);
+    }
+  }
 }

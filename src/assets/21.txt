@@ -1,0 +1,6 @@
+Auprès de l'aigle*bois*H*Tu sors de ta besace un ingrédient médicinal trouvé sur ta route. Tu te rapproche doucement de l'oiseau en lui envoyant des ondes de paix, et tu appliques l'onguent sur sa plaie.
+L'oiseau, au début furieux, puis apeuré, finit par se calmer. Il a un air reconnaissant...
+Mais l'heure tourne ! Tu penses à ta batterie en train de se décharger et tu montres à l'oiseau la crevasse contenant l'objet de tes désirs.
+L'oiseau semble comprendre, s'envole et va chercher la pièce. Il te la rapporte !
+Vous échangez un regard fier dans lequel vous comprenez que vous êtes quittes, et le respect grandit (+2).
+*23-Retour à la maison;12-Aller vers la rivière*H;2*

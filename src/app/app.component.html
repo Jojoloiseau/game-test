@@ -25,12 +25,12 @@
   <span style="font-size: 3em; color: #ffffff; margin-left: 0px;" *ngIf="energy > energyMax*(3/4); else threeQuarter">
       <i class="fas fa-battery-full"></i>
   </span>
-  <span>{{energy}}</span>
+  <span>{{energy}}/{{energyMax}}</span>
   <div class="spacer"></div>
   <span style="font-size: 3em; color: #ffffff; margin-left: 0px;">
       <i class="fas fa-coins"></i>
   </span>
-  <span>{{money}}</span>
+  <span>{{bolt}}</span>
 </div>
 
 <ng-template #emptyToolbar>
@@ -63,7 +63,10 @@
 </ng-template>
 
 <app-start *ngIf="page === 'Intro'" (start)="start($event)"></app-start>
-<app-component-test *ngIf="page !== 'Intro' && energy > 0" [page]="page" (moving)="onMove()"> </app-component-test>
-<app-failure *ngIf="energy === 0" (restart)="init()"></app-failure>
+<app-component-test *ngIf="page !== 'Intro' && energy > 0"
+[page]="page" [name]="name" [strenght]="strenght" [magic]="magic" [heart]="heart" [energy]="energy" [energyMax]="energyMax" [bolt]="bolt"
+(moving)="onMove()" (characsChanging)="onCharacChanging($event)" (changeAtmosphere)="changeMusic($event)" (hit)="gotHit($event)" (endingText)="changeEndingText($event)">
+</app-component-test>
+<app-failure *ngIf="energy < 1" [endingText]="endingText" (restart)="init()" (failure)="failure()"></app-failure>
 
 <router-outlet></router-outlet>

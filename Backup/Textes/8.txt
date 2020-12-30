@@ -1,0 +1,5 @@
+Les bois*combat*F*Un écureuil attaque, défends-toi ! La fuite est impossible... L'animal est bien trop rapide. Il a l'air enragé le bougre !
+En tant qu'androïde, tu as un bouclier qui s'active dès que l'animal devrait te toucher, donc pas de panique. 
+Cependant, chaque coup qu'il te porte puise directement dans tes réserves, fais tout de même attention !
+***6;2;ecureuil*reward*10*
+

@@ -5,6 +5,7 @@
         <i *ngIf="type === 'F'" class="fas fa-fist-raised"></i>
         <i *ngIf="type === 'R'" class="fas fa-drumstick-bite"></i>
         <i *ngIf="type === 'E'" class="fas fa-shoe-prints"></i>
+        <i *ngIf="type === 'H'" class="fas fa-handshake"></i>
       </span>
       <span> </span>
       <span style="margin-left: 0px">{{title}}</span>
@@ -12,13 +13,17 @@
  </div>
 
  <div id="description">
- <h3>
-  <span style="margin-left: 0px">{{description}}</span>
+  <h3>
+    <span style="margin-left: 0px">{{description}}</span>
   </h3>
  </div>
 
+ <app-fight *ngIf="type === 'F'"
+ [fightData]="fightData" [strenght]="strenght" [magic]="magic" [heart]="heart" [energy]="energy" [energyMax]="energyMax" [bolt]="bolt"
+ (hit)="gotHit($event)" (endOfFight)="toVictory()">
+ </app-fight>
 
- <div id="goTo" class="card-container">
+ <div id="goTo" class="card-container" *ngIf="type !== 'F'">
     <div class="card card-small" *ngFor="let nextPage of nextPages" (click)="load(nextPage.page)">
     <i class="fas fa-caret-right"></i>{{nextPage.description}}<i class="fas fa-caret-left"></i>
     </div>
