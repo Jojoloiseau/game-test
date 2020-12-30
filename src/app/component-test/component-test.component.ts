@@ -61,7 +61,8 @@ export class ComponentTestComponent implements OnInit {
   public description: string | undefined;
   public nextPages: Page[] | undefined;
   public fullPage: string | undefined;
-  public changeCharacs: ChangeCharacs | undefined;
+  public changeCharac: ChangeCharacs | undefined;
+  public changeCharacs: string[] | undefined;
   public fightData: FightData | undefined;
   public reward : string | undefined;
   public victoriousPage : string | undefined;
@@ -99,11 +100,15 @@ export class ComponentTestComponent implements OnInit {
           description: elt.split('-')[1]
         };
       });
-      this.changeCharacs = {
-        charac : elts[5]?.split(';')[0],
-        change : parseInt(elts[5]?.split(';')[1])
-      };
-      this.characsChanging.emit(this.changeCharacs);
+      this.changeCharacs = elts[5]?.split('$');
+      this.changeCharacs?.forEach((elt) => {
+        this.changeCharac = {
+        charac : elt.split(';')[0],
+        change : parseInt(elt.split(';')[1])
+        };
+        this.characsChanging.emit(this.changeCharac);
+      })
+      
       this.fightData = {
         life: parseInt(elts[6]?.split(';')[0]),
         skills: parseInt(elts[6]?.split(';')[1]),

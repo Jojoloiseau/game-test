@@ -1,3 +1,3 @@
 Auprès de l'aigle*bois*E*Tu te rapproches de l'oiseau. Il est blessé au flanc. C'est une blessure qui est superficielle mais qui a l'air de le faire souffrir.
 Que comptes-tu faire ?
-*22-Laisser l'oiseau;21-Aider l'oiseau-I-2*
+*22-Laisser l'oiseau;21-Aider l'oiseau-I-2**
