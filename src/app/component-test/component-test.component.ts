@@ -41,6 +41,7 @@ export class ComponentTestComponent implements OnInit {
   @Output() characsChanging = new EventEmitter<ChangeCharacs>();
   @Output() changeAtmosphere = new EventEmitter<string>();
   @Output() hit = new EventEmitter<number>();
+  @Output() endingText = new EventEmitter<string>();
 
   constructor(private http: HttpClient) {
   this.name = '';
@@ -83,6 +84,9 @@ export class ComponentTestComponent implements OnInit {
       this.changeAtmosphere.emit(this.ambiance);
       this.type = elts[2]
       this.description = elts[3].replace('[Name]', this.name);
+      if(this.type === 'L'){
+        this.endingText.emit(this.description);
+      }
       const pages: string = elts[4];
       const nextPages = pages.split(';');
       this.nextPages = nextPages.map((elt) => {

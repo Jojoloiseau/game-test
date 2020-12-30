@@ -19,9 +19,9 @@ export class AppComponent {
   audio = new Audio();
   oldPlace = '';
   newPlace = '';
+  endingText = '';
 
   public start(event: string): void {
-  console.log(event);
     this.name = event;
     this.page = '0';
     this.playAudio('intro');
@@ -52,6 +52,7 @@ export class AppComponent {
     this.energy = 20;
     this.bolt = 5;
     this.energyMax = 20;
+    this.endingText = '';
   }
 
   public playAudio(song: string): void{
@@ -129,6 +130,10 @@ export class AppComponent {
     if(this.energy < 1){
       this.badEnding();
     }
+  }
+
+  public changeEndingText(event: string): void {
+    this.endingText = event;
   }
 
   public failure(): void {
