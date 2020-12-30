@@ -1,10 +1,12 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators'
+import { filter, map } from 'rxjs/operators'
 
 interface Page{
   page: string;
   description: string;
+  condition?: string;
+  level?: string;
 }
 
 export interface ChangeCharacs{
@@ -89,7 +91,9 @@ export class ComponentTestComponent implements OnInit {
       }
       const pages: string = elts[4];
       const nextPages = pages.split(';');
-      this.nextPages = nextPages.map((elt) => {
+      this.nextPages = nextPages
+      .filter((elt) => this.hasTheLevel(elt))
+      .map((elt) => {
         return {
           page: elt.split('-')[0],
           description: elt.split('-')[1]
@@ -108,6 +112,18 @@ export class ComponentTestComponent implements OnInit {
       console.log(this.fightData);
       this.reward = elts[7]? elts[7] : undefined;
       this.victoriousPage = elts[8]? elts[8] : undefined;
+    }
+  }
+
+  public hasTheLevel(elt: Page): boolean {
+    if(elt.split('-')[2] && elt.split('-')[3] ){
+      if(elt.split('-')[2] === 'I' && this.magic >= elt.split('-')[3]) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return true;
     }
   }
 
