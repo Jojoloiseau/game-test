@@ -1,0 +1,9 @@
+La Rivière*riviere*E*A la lisière de la forêt, il semble normal de trouver du bois. Mais du bois entassé de cette manière ?? Il s'agit d'un véritable travail d'orphèvre.
+Les branches emêlées semblent servir d'habitat à une créature des bois. Et c'est extasié que tu entends un petit toussotemment. Tu te retournes et voilà un castor !
+Il te regarde avec amusement. "Alors comme ça tu aimes le travail bien fait ! C'est bien." Il se frise les moustaches.
+Tu lui expliques ce que tu cherches.
+"Un panneau solaire ?? Tu tombes bien ! J'en ai repêché un morceau. Seulement... Il ne sera pas gratuit !"
+Tu décides de dire ce que tu possèdes.
+"Tu as de la chance ! Je suis un marchand itinérant ! J'accepte les Boulons ! Je te vends ce que j'ai trouvé pour 6 Boulons.
+Après, je vois aussi que tu as un module de force. On trouve parfois des androïdes de passage... Je peux te l'échanger contre ça.
+*19-Attaquer le castor pour le voler;20-Echanger les Boulons;25-Echanger le module**

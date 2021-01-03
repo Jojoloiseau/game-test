@@ -44,6 +44,7 @@ export class ComponentTestComponent implements OnInit {
   @Output() changeAtmosphere = new EventEmitter<string>();
   @Output() hit = new EventEmitter<number>();
   @Output() endingText = new EventEmitter<string>();
+  @Output() restart = new EventEmitter<void>();
 
   constructor(private http: HttpClient) {
   this.name = '';
@@ -155,5 +156,9 @@ export class ComponentTestComponent implements OnInit {
     if(this.victoriousPage){
       this.load(this.victoriousPage);
     }
+  }
+
+  public restartClick(): void {
+    this.restart.emit();
   }
 }

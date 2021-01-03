@@ -1,0 +1,7 @@
+La Rivière*riviere*E*Tu arrives au bord de la rivière.
+Devant toi, des galets. Au milieu de ces galets, un éclat argenté surprend ton oeil.
+... Génial ! 3 Boulons à ajouter à ta réserve (+3) !
+En aval, tu entends un bruit sourd. Tu sais qu'il y a une chute d'eau par ici.
+En amont, tu perçois comme du bois empilé sur la rivière.
+Que faire ?
+*15-Aller vers le tas de bois;16-Se rapprocher de la chute*B;3

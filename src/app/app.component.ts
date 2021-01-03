@@ -43,6 +43,7 @@ export class AppComponent {
   }
 
   public init(): void {
+    this.stopAudio();
     this.title = 'Test Game';
     this.page = 'Intro';
     this.name = '';

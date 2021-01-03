@@ -1,0 +1,4 @@
+La Rivière*riviere*E*Effectivement, tu arrives devant la chute. Le spectacle est magnifique. Un arc-en-ciel se dessine dans les goutelettes d'eau.
+Tu te penches et il te semble apercevoir des reflets argentés entre des tâches sombres menaçantes...
+Que souhaites-tu faire ?
+*18-Sauter;15-Retourner vers le tas de bois*
